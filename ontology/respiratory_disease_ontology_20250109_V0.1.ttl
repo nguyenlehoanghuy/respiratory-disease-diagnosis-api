@@ -1,0 +1,934 @@
+@prefix : <http://www.ctu.edu.vn/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.ctu.edu.vn/> .
+
+<http://www.ctu.edu.vn> rdf:type owl:Ontology ;
+                         rdfs:comment "Ontology for dianogsis" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ctu.edu.vn/hasSymptom
+:hasSymptom rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isCausedBy ;
+            rdfs:domain :Disease ;
+            rdfs:range :Symptom .
+
+
+###  http://www.ctu.edu.vn/hasTreatment
+:hasTreatment rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isForDisease ;
+              rdfs:domain :Disease ;
+              rdfs:range :Treatment .
+
+
+###  http://www.ctu.edu.vn/isCausedBy
+:isCausedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Symptom ;
+            rdfs:range :Disease .
+
+
+###  http://www.ctu.edu.vn/isForDisease
+:isForDisease rdf:type owl:ObjectProperty ;
+              rdfs:domain :Treatment ;
+              rdfs:range :Disease .
+
+
+###  http://www.ctu.edu.vn/relatedTo
+:relatedTo rdf:type owl:ObjectProperty ,
+                    owl:SymmetricProperty ;
+           rdfs:domain :Symptom ;
+           rdfs:range :Symptom .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ctu.edu.vn/hasDiseaseName
+:hasDiseaseName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Disease ;
+                rdfs:range xsd:string .
+
+
+###  http://www.ctu.edu.vn/hasDuration
+:hasDuration rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Symptom ;
+             rdfs:range xsd:int .
+
+
+###  http://www.ctu.edu.vn/hasSeverity
+:hasSeverity rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Disease ;
+             rdfs:range xsd:int .
+
+
+###  http://www.ctu.edu.vn/hasSymptomName
+:hasSymptomName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Symptom ;
+                rdfs:range xsd:string .
+
+
+###  http://www.ctu.edu.vn/hasTreatmentName
+:hasTreatmentName rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Treatment ;
+                  rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.ctu.edu.vn/Disease
+:Disease rdf:type owl:Class .
+
+
+###  http://www.ctu.edu.vn/Symptom
+:Symptom rdf:type owl:Class .
+
+
+###  http://www.ctu.edu.vn/Treatment
+:Treatment rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.ctu.edu.vn#BanDoOHong
+:BanDoOHong rdf:type owl:NamedIndividual ,
+                     :Symptom ;
+            :isCausedBy :ViemHongHat ;
+            :relatedTo :DauBung ,
+                       :DauKhiNuot ,
+                       :PhiDaiAmidan ,
+                       :XuatHuyetVomMieng ,
+                       :BuonNon ,
+                       :DauDau ,
+                       :DauHong ,
+                       :Sot ;
+            :hasSymptomName "Ban đỏ ở họng" .
+
+
+###  http://www.ctu.edu.vn#CumMua
+:CumMua rdf:type owl:NamedIndividual ,
+                 :Disease ;
+        :hasSymptom :ChayMui ,
+                    :DauDau ,
+                    :DauHong ,
+                    :DauNhuc ,
+                    :Ho ,
+                    :MetMoi ,
+                    :Sot ;
+        :hasTreatment :ThuocKhangVirutCum ;
+        :hasDiseaseName "Cúm mùa" .
+
+
+###  http://www.ctu.edu.vn#DanLuuDom
+:DanLuuDom rdf:type owl:NamedIndividual ,
+                    :Treatment ;
+           :isForDisease :GianPheQuan ;
+           :hasTreatmentName "Dẫn lưu đờm" .
+
+
+###  http://www.ctu.edu.vn#DauBung
+:DauBung rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :ViemHongHat ;
+         :relatedTo :BanDoOHong ,
+                    :DauKhiNuot ,
+                    :PhiDaiAmidan ,
+                    :XuatHuyetVomMieng ,
+                    :BuonNon ,
+                    :DauDau ,
+                    :DauHong ,
+                    :Sot ;
+         :hasSymptomName "Đau bụng" .
+
+
+###  http://www.ctu.edu.vn#DauKhiNuot
+:DauKhiNuot rdf:type owl:NamedIndividual ,
+                     :Symptom ;
+            :isCausedBy :ViemHongHat ;
+            :relatedTo :BanDoOHong ,
+                       :DauBung ,
+                       :PhiDaiAmidan ,
+                       :XuatHuyetVomMieng ,
+                       :BuonNon ,
+                       :DauDau ,
+                       :DauHong ,
+                       :Sot ;
+            :hasSymptomName "Đau khi nuốt" .
+
+
+###  http://www.ctu.edu.vn#DungThuocKhangSinh
+:DungThuocKhangSinh rdf:type owl:NamedIndividual ,
+                             :Treatment ;
+                    :isForDisease :GianPheQuan ,
+                                  :ViemHongHat ;
+                    :hasTreatmentName "Dùng thuốc kháng sinh" .
+
+
+###  http://www.ctu.edu.vn#GianPheQuan
+:GianPheQuan rdf:type owl:NamedIndividual ,
+                      :Disease ;
+             :hasSymptom :PhuChan ,
+                         :DauNguc ,
+                         :Ho ,
+                         :HoRaMau ,
+                         :KhoTho ,
+                         :Sot ;
+             :hasTreatment :DanLuuDom ,
+                           :DungThuocKhangSinh ;
+             :hasDiseaseName "Giãn phế quản" .
+
+
+###  http://www.ctu.edu.vn#PhiDaiAmidan
+:PhiDaiAmidan rdf:type owl:NamedIndividual ,
+                       :Symptom ;
+              :relatedTo :BanDoOHong ,
+                         :DauBung ,
+                         :DauKhiNuot ,
+                         :XuatHuyetVomMieng ,
+                         :BuonNon ,
+                         :DauDau ,
+                         :DauHong ,
+                         :Sot ;
+              :hasSymptomName "Phì đại amidan" .
+
+
+###  http://www.ctu.edu.vn#PhuChan
+:PhuChan rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :GianPheQuan ;
+         :relatedTo :DauNguc ,
+                    :Ho ,
+                    :HoRaMau ,
+                    :KhoTho ,
+                    :Sot ;
+         :hasSymptomName "Phù chân" .
+
+
+###  http://www.ctu.edu.vn#ThuocKhangVirutCum
+:ThuocKhangVirutCum rdf:type owl:NamedIndividual ,
+                             :Treatment ;
+                    :isForDisease :CumMua ;
+                    :hasTreatmentName "Thuốc kháng vi-rút cúm" .
+
+
+###  http://www.ctu.edu.vn#ViemHongHat
+:ViemHongHat rdf:type owl:NamedIndividual ,
+                      :Disease ;
+             :hasSymptom :BanDoOHong ,
+                         :DauBung ,
+                         :DauKhiNuot ,
+                         :PhiDaiAmidan ,
+                         :XuatHuyetVomMieng ,
+                         :BuonNon ,
+                         :DauDau ,
+                         :DauHong ,
+                         :Sot ;
+             :hasTreatment :DungThuocKhangSinh ;
+             :hasDiseaseName "Viêm họng hạt" .
+
+
+###  http://www.ctu.edu.vn#XuatHuyetVomMieng
+:XuatHuyetVomMieng rdf:type owl:NamedIndividual ,
+                            :Symptom ;
+                   :isCausedBy :ViemHongHat ;
+                   :relatedTo :BanDoOHong ,
+                              :DauBung ,
+                              :DauKhiNuot ,
+                              :PhiDaiAmidan ,
+                              :BuonNon ,
+                              :DauDau ,
+                              :DauHong ,
+                              :Sot ;
+                   :hasSymptomName "Xuất huyết vòm miệng" .
+
+
+###  http://www.ctu.edu.vn/BuonNon
+:BuonNon rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :ViemHongHat ,
+                     :LaoPhoi ;
+         :relatedTo :BanDoOHong ,
+                    :DauBung ,
+                    :DauKhiNuot ,
+                    :PhiDaiAmidan ,
+                    :XuatHuyetVomMieng ,
+                    :DauDau ,
+                    :DauHong ,
+                    :DauNguc ,
+                    :Ho ,
+                    :HutHoi ,
+                    :LuLan ,
+                    :MetMoi ,
+                    :OnLanh ,
+                    :Sot ,
+                    :TieuChay ;
+         :hasSymptomName "Buồn nôn" .
+
+
+###  http://www.ctu.edu.vn/CamLanh
+:CamLanh rdf:type owl:NamedIndividual ,
+                  :Disease ;
+         :hasSymptom :ChayMui ,
+                     :DauDau ,
+                     :DauHong ,
+                     :DauNhuc ,
+                     :HatHoi ,
+                     :Ho ,
+                     :NghetMui ,
+                     :Sot ;
+         :hasTreatment :DungThuoc ;
+         :hasDiseaseName "Cảm lạnh" ;
+         :hasSeverity "5"^^xsd:int .
+
+
+###  http://www.ctu.edu.vn/ChamSocTotBenhManTinh
+:ChamSocTotBenhManTinh rdf:type owl:NamedIndividual ,
+                                :Treatment ;
+                       :isForDisease :LaoPhoi ;
+                       :hasTreatmentName "Chăm sóc tốt bệnh mãn tính" .
+
+
+###  http://www.ctu.edu.vn/ChayDichMuiSau
+:ChayDichMuiSau rdf:type owl:NamedIndividual ,
+                         :Symptom ;
+                :isCausedBy :ViemXoang ;
+                :relatedTo :ChayMui ,
+                           :DauDau ,
+                           :DauHong ,
+                           :Ho ,
+                           :HoiMieng ,
+                           :NghetMui ;
+                :hasSymptomName "Chảy dịch mũi sau" .
+
+
+###  http://www.ctu.edu.vn/ChayMui
+:ChayMui rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :CumMua ,
+                     :CamLanh ,
+                     :ViemXoang ;
+         :relatedTo :ChayDichMuiSau ,
+                    :DauDau ,
+                    :DauHong ,
+                    :DauNhuc ,
+                    :HatHoi ,
+                    :Ho ,
+                    :HoiMieng ,
+                    :MetMoi ,
+                    :NghetMui ,
+                    :Sot ;
+         :hasDuration "7"^^xsd:int ;
+         :hasSymptomName "Chảy mũi" .
+
+
+###  http://www.ctu.edu.vn/DauDau
+:DauDau rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :CumMua ,
+                    :ViemHongHat ,
+                    :CamLanh ,
+                    :ViemPheQuanCapTinh ,
+                    :ViemXoang ;
+        :relatedTo :BanDoOHong ,
+                   :DauBung ,
+                   :DauKhiNuot ,
+                   :PhiDaiAmidan ,
+                   :XuatHuyetVomMieng ,
+                   :BuonNon ,
+                   :ChayDichMuiSau ,
+                   :ChayMui ,
+                   :DauHong ,
+                   :DauNhuc ,
+                   :DauNhucNguc ,
+                   :HatHoi ,
+                   :Ho ,
+                   :HoCoDom ,
+                   :HoiMieng ,
+                   :MetMoi ,
+                   :NghetMui ,
+                   :Sot ;
+        :hasSymptomName "Đau đầu" .
+
+
+###  http://www.ctu.edu.vn/DauHong
+:DauHong rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :CumMua ,
+                     :ViemHongHat ,
+                     :CamLanh ,
+                     :ViemPheQuanCapTinh ,
+                     :ViemXoang ;
+         :relatedTo :BanDoOHong ,
+                    :DauBung ,
+                    :DauKhiNuot ,
+                    :PhiDaiAmidan ,
+                    :XuatHuyetVomMieng ,
+                    :BuonNon ,
+                    :ChayDichMuiSau ,
+                    :ChayMui ,
+                    :DauDau ,
+                    :DauHong ,
+                    :DauNhuc ,
+                    :DauNhucNguc ,
+                    :HatHoi ,
+                    :Ho ,
+                    :HoCoDom ,
+                    :HoiMieng ,
+                    :MetMoi ,
+                    :NghetMui ,
+                    :Sot ;
+         :hasSymptomName "Đau họng" .
+
+
+###  http://www.ctu.edu.vn/DauNguc
+:DauNguc rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :GianPheQuan ,
+                     :Lao ,
+                     :LaoPhoi ;
+         :relatedTo :PhuChan ,
+                    :BuonNon ,
+                    :DoMoHoiBanDem ,
+                    :GiamCan ,
+                    :Ho ,
+                    :HoCoDom ,
+                    :HoDaiDang ,
+                    :HoRaMau ,
+                    :HutHoi ,
+                    :KhoTho ,
+                    :KhongThemAn ,
+                    :LuLan ,
+                    :MetMoi ,
+                    :OnLanh ,
+                    :Sot ,
+                    :TieuChay ;
+         :hasSymptomName "Đau ngực" .
+
+
+###  http://www.ctu.edu.vn/DauNhuc
+:DauNhuc rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :CumMua ,
+                     :CamLanh ,
+                     :ViemPheQuanCapTinh ;
+         :relatedTo :ChayMui ,
+                    :DauDau ,
+                    :DauHong ,
+                    :DauNhucNguc ,
+                    :HatHoi ,
+                    :Ho ,
+                    :HoCoDom ,
+                    :MetMoi ,
+                    :NghetMui ,
+                    :Sot ;
+         :hasSymptomName "Đau nhức" .
+
+
+###  http://www.ctu.edu.vn/DauNhucNguc
+:DauNhucNguc rdf:type owl:NamedIndividual ,
+                      :Symptom ;
+             :isCausedBy :ViemPheQuanCapTinh ;
+             :relatedTo :DauDau ,
+                        :DauHong ,
+                        :DauNhuc ,
+                        :Ho ,
+                        :HoCoDom ,
+                        :MetMoi ;
+             :hasSymptomName "Đau nhức ngực" .
+
+
+###  http://www.ctu.edu.vn/DoMoHoiBanDem
+:DoMoHoiBanDem rdf:type owl:NamedIndividual ,
+                        :Symptom ;
+               :isCausedBy :Lao ;
+               :relatedTo :DauNguc ,
+                          :GiamCan ,
+                          :HoCoDom ,
+                          :HoDaiDang ,
+                          :HoRaMau ,
+                          :KhongThemAn ,
+                          :MetMoi ,
+                          :OnLanh ,
+                          :Sot ;
+               :hasSymptomName "Đổ mồ hôi vào ban đêm" .
+
+
+###  http://www.ctu.edu.vn/DomChatNhay
+:DomChatNhay rdf:type owl:NamedIndividual ,
+                      :Symptom ;
+             :isCausedBy :PhoiTacNghenManTinh ;
+             :relatedTo :Ho ,
+                        :KhoTho ,
+                        :KhoThoSau ,
+                        :ThoKhoKhe ;
+             :hasSymptomName "Đờm hoặc chất nhầy dư thừa" .
+
+
+###  http://www.ctu.edu.vn/DungThuoc
+:DungThuoc rdf:type owl:NamedIndividual ,
+                    :Treatment ;
+           :isForDisease :CamLanh ,
+                         :Lao ;
+           :hasTreatmentName "Dùng thuốc" .
+
+
+###  http://www.ctu.edu.vn/GiamCan
+:GiamCan rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :Lao ;
+         :relatedTo :DauNguc ,
+                    :DoMoHoiBanDem ,
+                    :HoCoDom ,
+                    :HoDaiDang ,
+                    :HoRaMau ,
+                    :KhongThemAn ,
+                    :MetMoi ,
+                    :OnLanh ,
+                    :Sot ;
+         :hasSymptomName "Giảm cân" .
+
+
+###  http://www.ctu.edu.vn/HanCheChatLuongKhongKhiKem
+:HanCheChatLuongKhongKhiKem rdf:type owl:NamedIndividual ,
+                                     :Treatment ;
+                            :isForDisease :PhoiTacNghenManTinh ;
+                            :hasSymptomName "Hạn chế ở nơi chất lượng không khí kém" .
+
+
+###  http://www.ctu.edu.vn/HatHoi
+:HatHoi rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :CamLanh ;
+        :relatedTo :ChayMui ,
+                   :DauDau ,
+                   :DauHong ,
+                   :DauNhuc ,
+                   :Ho ,
+                   :NghetMui ,
+                   :Sot ;
+        :hasSymptomName "Hắt hơi" .
+
+
+###  http://www.ctu.edu.vn/Ho
+:Ho rdf:type owl:NamedIndividual ,
+             :Symptom ;
+    :isCausedBy :CumMua ,
+                :GianPheQuan ,
+                :CamLanh ,
+                :LaoPhoi ,
+                :PhoiTacNghenManTinh ,
+                :ViemPheQuanCapTinh ,
+                :ViemXoang ;
+    :relatedTo :BuonNon ,
+               :ChayDichMuiSau ,
+               :ChayMui ,
+               :DauDau ,
+               :DauHong ,
+               :DauNguc ,
+               :DauNhuc ,
+               :DauNhucNguc ,
+               :DomChatNhay ,
+               :HatHoi ,
+               :HoCoDom ,
+               :HoRaMau ,
+               :HoiMieng ,
+               :HutHoi ,
+               :KhoTho ,
+               :KhoThoSau ,
+               :LuLan ,
+               :MetMoi ,
+               :NghetMui ,
+               :OnLanh ,
+               :Sot ,
+               :ThoKhoKhe ,
+               :TieuChay ;
+    :hasDuration "14"^^xsd:int ;
+    :hasSymptomName "Ho" .
+
+
+###  http://www.ctu.edu.vn/HoCoDom
+:HoCoDom rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :Lao ,
+                     :ViemPheQuanCapTinh ;
+         :relatedTo :DauDau ,
+                    :DauHong ,
+                    :DauNguc ,
+                    :DauNhuc ,
+                    :DauNhucNguc ,
+                    :DoMoHoiBanDem ,
+                    :GiamCan ,
+                    :Ho ,
+                    :HoDaiDang ,
+                    :HoRaMau ,
+                    :KhongThemAn ,
+                    :MetMoi ,
+                    :OnLanh ,
+                    :Sot ;
+         :hasSymptomName "Ho có đờm" .
+
+
+###  http://www.ctu.edu.vn/HoDaiDang
+:HoDaiDang rdf:type owl:NamedIndividual ,
+                    :Symptom ;
+           :isCausedBy :Lao ;
+           :relatedTo :DauNguc ,
+                      :DoMoHoiBanDem ,
+                      :GiamCan ,
+                      :HoRaMau ,
+                      :KhongThemAn ,
+                      :MetMoi ,
+                      :OnLanh ,
+                      :Sot ;
+           :hasDuration "21"^^xsd:int ;
+           :hasSymptomName "Ho dai dẳng" .
+
+
+###  http://www.ctu.edu.vn/HoRaMau
+:HoRaMau rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         :isCausedBy :GianPheQuan ,
+                     :Lao ;
+         :relatedTo :PhuChan ,
+                    :DauNguc ,
+                    :DoMoHoiBanDem ,
+                    :GiamCan ,
+                    :Ho ,
+                    :HoCoDom ,
+                    :HoDaiDang ,
+                    :KhoTho ,
+                    :KhongThemAn ,
+                    :MetMoi ,
+                    :OnLanh ,
+                    :Sot ;
+         :hasSymptomName "Ho Ra Máu" .
+
+
+###  http://www.ctu.edu.vn/HoiMieng
+:HoiMieng rdf:type owl:NamedIndividual ,
+                   :Symptom ;
+          :isCausedBy :ViemXoang ;
+          :relatedTo :ChayDichMuiSau ,
+                     :ChayMui ,
+                     :DauDau ,
+                     :DauHong ,
+                     :Ho ,
+                     :NghetMui .
+
+
+###  http://www.ctu.edu.vn/HutHoi
+:HutHoi rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :LaoPhoi ;
+        :relatedTo :BuonNon ,
+                   :DauNguc ,
+                   :Ho ,
+                   :LuLan ,
+                   :MetMoi ,
+                   :OnLanh ,
+                   :Sot ,
+                   :TieuChay ;
+        :hasSymptomName "Hụt hơi" .
+
+
+###  http://www.ctu.edu.vn/KhoTho
+:KhoTho rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :GianPheQuan ,
+                    :PhoiTacNghenManTinh ;
+        :relatedTo :PhuChan ,
+                   :DauNguc ,
+                   :DomChatNhay ,
+                   :Ho ,
+                   :HoRaMau ,
+                   :KhoThoSau ,
+                   :Sot ,
+                   :ThoKhoKhe ;
+        :hasSymptomName "Khó thở" .
+
+
+###  http://www.ctu.edu.vn/KhoThoSau
+:KhoThoSau rdf:type owl:NamedIndividual ,
+                    :Symptom ;
+           :isCausedBy :PhoiTacNghenManTinh ;
+           :relatedTo :DomChatNhay ,
+                      :Ho ,
+                      :KhoTho ,
+                      :ThoKhoKhe ;
+           :hasSymptomName "Khó thở sâu" .
+
+
+###  http://www.ctu.edu.vn/KhongHutThuoc
+:KhongHutThuoc rdf:type owl:NamedIndividual ,
+                        :Treatment ;
+               :isForDisease :LaoPhoi ,
+                             :PhoiTacNghenManTinh ,
+                             :ViemPheQuanCapTinh ,
+                             :ViemXoang ;
+               :hasTreatmentName "Không hút thuốc" .
+
+
+###  http://www.ctu.edu.vn/KhongThemAn
+:KhongThemAn rdf:type owl:NamedIndividual ,
+                      :Symptom ;
+             :isCausedBy :Lao ;
+             :relatedTo :DauNguc ,
+                        :DoMoHoiBanDem ,
+                        :GiamCan ,
+                        :HoDaiDang ,
+                        :HoRaMau ,
+                        :MetMoi ,
+                        :OnLanh ,
+                        :Sot ;
+             :hasSymptomName "Không cảm giác thèm ăn" .
+
+
+###  http://www.ctu.edu.vn/Lao
+:Lao rdf:type owl:NamedIndividual ,
+              :Disease ;
+     :hasSymptom :DauNguc ,
+                 :DoMoHoiBanDem ,
+                 :GiamCan ,
+                 :HoCoDom ,
+                 :HoDaiDang ,
+                 :HoRaMau ,
+                 :KhongThemAn ,
+                 :MetMoi ,
+                 :OnLanh ,
+                 :Sot ;
+     :hasTreatment :DungThuoc ;
+     :hasDiseaseName "Lao" .
+
+
+###  http://www.ctu.edu.vn/LaoPhoi
+:LaoPhoi rdf:type owl:NamedIndividual ,
+                  :Disease ;
+         :hasSymptom :BuonNon ,
+                     :DauNguc ,
+                     :Ho ,
+                     :HutHoi ,
+                     :LuLan ,
+                     :MetMoi ,
+                     :OnLanh ,
+                     :Sot ,
+                     :TieuChay ;
+         :hasTreatment :KhongHutThuoc ,
+                       :VeSinhKhuTrungBeMatTiepXuc ;
+         :hasDiseaseName "Lao Phổi" .
+
+
+###  http://www.ctu.edu.vn/LuLan
+:LuLan rdf:type owl:NamedIndividual ,
+                :Symptom ;
+       :isCausedBy :LaoPhoi ;
+       :relatedTo :BuonNon ,
+                  :DauNguc ,
+                  :Ho ,
+                  :HutHoi ,
+                  :MetMoi ,
+                  :OnLanh ,
+                  :Sot ,
+                  :TieuChay ;
+       :hasSymptomName "Lú lẫn" .
+
+
+###  http://www.ctu.edu.vn/MetMoi
+:MetMoi rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :CumMua ,
+                    :Lao ,
+                    :LaoPhoi ,
+                    :ViemPheQuanCapTinh ;
+        :relatedTo :BuonNon ,
+                   :DauDau ,
+                   :DauHong ,
+                   :DauNguc ,
+                   :DauNhuc ,
+                   :DauNhucNguc ,
+                   :DoMoHoiBanDem ,
+                   :GiamCan ,
+                   :Ho ,
+                   :HoCoDom ,
+                   :HoDaiDang ,
+                   :HoRaMau ,
+                   :HutHoi ,
+                   :KhongThemAn ,
+                   :LuLan ,
+                   :OnLanh ,
+                   :Sot ,
+                   :TieuChay ;
+        :hasSymptomName "Mệt mỏi" .
+
+
+###  http://www.ctu.edu.vn/NghetMui
+:NghetMui rdf:type owl:NamedIndividual ,
+                   :Symptom ;
+          :isCausedBy :CamLanh ,
+                      :ViemXoang ;
+          :relatedTo :ChayDichMuiSau ,
+                     :ChayMui ,
+                     :DauDau ,
+                     :DauHong ,
+                     :DauNhuc ,
+                     :HatHoi ,
+                     :Ho ,
+                     :HoiMieng ,
+                     :Sot ;
+          :hasDuration "7"^^xsd:int ;
+          :hasSymptomName "Nghẹt mũi" .
+
+
+###  http://www.ctu.edu.vn/OnLanh
+:OnLanh rdf:type owl:NamedIndividual ,
+                 :Symptom ;
+        :isCausedBy :Lao ,
+                    :LaoPhoi ;
+        :relatedTo :BuonNon ,
+                   :DauNguc ,
+                   :DoMoHoiBanDem ,
+                   :GiamCan ,
+                   :Ho ,
+                   :HoCoDom ,
+                   :HoDaiDang ,
+                   :HoRaMau ,
+                   :HutHoi ,
+                   :KhongThemAn ,
+                   :LuLan ,
+                   :MetMoi ,
+                   :Sot ,
+                   :TieuChay ;
+        :hasSymptomName "Ớn lạnh" .
+
+
+###  http://www.ctu.edu.vn/PhoiTacNghenManTinh
+:PhoiTacNghenManTinh rdf:type owl:NamedIndividual ,
+                              :Disease ;
+                     :hasSymptom :DomChatNhay ,
+                                 :Ho ,
+                                 :KhoTho ,
+                                 :KhoThoSau ,
+                                 :ThoKhoKhe ;
+                     :hasTreatment :HanCheChatLuongKhongKhiKem ,
+                                   :KhongHutThuoc ;
+                     :hasDiseaseName "Phổi tắc nghẽn mãn tính" .
+
+
+###  http://www.ctu.edu.vn/Sot
+:Sot rdf:type owl:NamedIndividual ,
+              :Symptom ;
+     :isCausedBy :CumMua ,
+                 :GianPheQuan ,
+                 :ViemHongHat ,
+                 :CamLanh ,
+                 :Lao ,
+                 :LaoPhoi ;
+     :relatedTo :BanDoOHong ,
+                :DauBung ,
+                :DauKhiNuot ,
+                :PhiDaiAmidan ,
+                :PhuChan ,
+                :XuatHuyetVomMieng ,
+                :BuonNon ,
+                :ChayMui ,
+                :DauDau ,
+                :DauHong ,
+                :DauNguc ,
+                :DauNhuc ,
+                :DoMoHoiBanDem ,
+                :GiamCan ,
+                :HatHoi ,
+                :Ho ,
+                :HoCoDom ,
+                :HoDaiDang ,
+                :HoRaMau ,
+                :HutHoi ,
+                :KhoTho ,
+                :KhongThemAn ,
+                :LuLan ,
+                :MetMoi ,
+                :NghetMui ,
+                :OnLanh ,
+                :TieuChay ;
+     :hasSymptomName "Sốt" .
+
+
+###  http://www.ctu.edu.vn/SuDungMayTaoDoAm
+:SuDungMayTaoDoAm rdf:type owl:NamedIndividual ,
+                           :Treatment ;
+                  :isForDisease :ViemXoang ;
+                  :hasTreatmentName "Sử dụng máy tạo độ ẩm" .
+
+
+###  http://www.ctu.edu.vn/ThoKhoKhe
+:ThoKhoKhe rdf:type owl:NamedIndividual ,
+                    :Symptom ;
+           :isCausedBy :PhoiTacNghenManTinh ;
+           :relatedTo :DomChatNhay ,
+                      :Ho ,
+                      :KhoTho ,
+                      :KhoThoSau ;
+           :hasSymptomName "Thở khò khè" .
+
+
+###  http://www.ctu.edu.vn/TieuChay
+:TieuChay rdf:type owl:NamedIndividual ,
+                   :Symptom ;
+          :isCausedBy :LaoPhoi ;
+          :relatedTo :BuonNon ,
+                     :DauNguc ,
+                     :Ho ,
+                     :HutHoi ,
+                     :LuLan ,
+                     :MetMoi ,
+                     :OnLanh ,
+                     :Sot ;
+          :hasSymptomName "Tiêu chảy" .
+
+
+###  http://www.ctu.edu.vn/VeSinhKhuTrungBeMatTiepXuc
+:VeSinhKhuTrungBeMatTiepXuc rdf:type owl:NamedIndividual ,
+                                     :Treatment ;
+                            :isForDisease :LaoPhoi ;
+                            :hasTreatmentName "Vệ sinh khử trùng bề mặt tiếp xúc nhiều" .
+
+
+###  http://www.ctu.edu.vn/ViemPheQuanCapTinh
+:ViemPheQuanCapTinh rdf:type owl:NamedIndividual ,
+                             :Disease ;
+                    :hasSymptom :DauDau ,
+                                :DauHong ,
+                                :DauNhuc ,
+                                :DauNhucNguc ,
+                                :Ho ,
+                                :HoCoDom ,
+                                :MetMoi ;
+                    :hasTreatment :KhongHutThuoc ;
+                    :hasDiseaseName "Viêm phế quản cấp tính" .
+
+
+###  http://www.ctu.edu.vn/ViemXoang
+:ViemXoang rdf:type owl:NamedIndividual ,
+                    :Disease ;
+           :hasSymptom :ChayDichMuiSau ,
+                       :ChayMui ,
+                       :DauDau ,
+                       :DauHong ,
+                       :Ho ,
+                       :HoiMieng ,
+                       :NghetMui ;
+           :hasTreatment :KhongHutThuoc ,
+                         :SuDungMayTaoDoAm ;
+           :hasDiseaseName "Viêm xoang" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

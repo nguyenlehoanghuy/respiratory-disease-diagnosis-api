@@ -5,7 +5,7 @@ from rdflib import Graph, Namespace
 class OntologyLoader:
     def __init__(self, ontology_path):
         self.graph = Graph()
-        self.EX = Namespace("http://example.com/schema#")
+        self.EX = Namespace("http://www.ctu.edu.vn/")
 
         try:
             self.graph.parse(ontology_path, format="turtle")

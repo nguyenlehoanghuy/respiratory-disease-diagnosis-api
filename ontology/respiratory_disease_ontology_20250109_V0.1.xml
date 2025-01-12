@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.ctu.edu.vn"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.ctu.edu.vn">
+    <Prefix name="" IRI="http://www.ctu.edu.vn/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal>Ontology for dianogsis</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Disease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Symptom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Treatment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSymptom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTreatment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCausedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isForDisease"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#relatedTo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDiseaseName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSeverity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSymptomName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasTreatmentName"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CamLanh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ChayMui"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DungThuoc"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NghetMui"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="#Disease"/>
+        <NamedIndividual IRI="#CamLanh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Symptom"/>
+        <NamedIndividual IRI="#ChayMui"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Treatment"/>
+        <NamedIndividual IRI="#DungThuoc"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSymptom"/>
+        <NamedIndividual IRI="#CamLanh"/>
+        <NamedIndividual IRI="#ChayMui"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSymptom"/>
+        <NamedIndividual IRI="#CamLanh"/>
+        <NamedIndividual IRI="#NghetMui"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTreatment"/>
+        <NamedIndividual IRI="#CamLanh"/>
+        <NamedIndividual IRI="#DungThuoc"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isCausedBy"/>
+        <NamedIndividual IRI="#ChayMui"/>
+        <NamedIndividual IRI="#CamLanh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#relatedTo"/>
+        <NamedIndividual IRI="#ChayMui"/>
+        <NamedIndividual IRI="#NghetMui"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isForDisease"/>
+        <NamedIndividual IRI="#DungThuoc"/>
+        <NamedIndividual IRI="#CamLanh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isCausedBy"/>
+        <NamedIndividual IRI="#NghetMui"/>
+        <NamedIndividual IRI="#CamLanh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#relatedTo"/>
+        <NamedIndividual IRI="#NghetMui"/>
+        <NamedIndividual IRI="#ChayMui"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDiseaseName"/>
+        <NamedIndividual IRI="#CamLanh"/>
+        <Literal>Cảm lạnh</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSeverity"/>
+        <NamedIndividual IRI="#CamLanh"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDuration"/>
+        <NamedIndividual IRI="#ChayMui"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSymptomName"/>
+        <NamedIndividual IRI="#ChayMui"/>
+        <Literal>Chảy mũi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasTreatmentName"/>
+        <NamedIndividual IRI="#DungThuoc"/>
+        <Literal>Dùng thuốc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasDuration"/>
+        <NamedIndividual IRI="#NghetMui"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasSymptomName"/>
+        <NamedIndividual IRI="#NghetMui"/>
+        <Literal>Nghẹt mũi</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasSymptom"/>
+        <ObjectProperty IRI="#isCausedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasTreatment"/>
+        <ObjectProperty IRI="#isForDisease"/>
+    </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#relatedTo"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSymptom"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTreatment"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isCausedBy"/>
+        <Class IRI="#Symptom"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isForDisease"/>
+        <Class IRI="#Treatment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#relatedTo"/>
+        <Class IRI="#Symptom"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSymptom"/>
+        <Class IRI="#Symptom"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTreatment"/>
+        <Class IRI="#Treatment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isCausedBy"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isForDisease"/>
+        <Class IRI="#Disease"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#relatedTo"/>
+        <Class IRI="#Symptom"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDiseaseName"/>
+        <Class IRI="#Disease"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDuration"/>
+        <Class IRI="#Symptom"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSeverity"/>
+        <Class IRI="#Disease"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSymptomName"/>
+        <Class IRI="#Symptom"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasTreatmentName"/>
+        <Class IRI="#Treatment"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDiseaseName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDuration"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSeverity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSymptomName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasTreatmentName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
