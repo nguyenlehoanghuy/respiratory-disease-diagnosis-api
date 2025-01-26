@@ -36,8 +36,6 @@ class DiagnosisService:
 
     def diagnose_diseases(self, symptoms):
         try:
-            # Loại bỏ 'hasSymptom' khỏi mảng triệu chứng
-            print(symptoms)
             symptoms = [s for s in symptoms if s != 'hasSymptom']
 
             query = f"""
@@ -68,14 +66,16 @@ class DiagnosisService:
 
     def get_related_symptoms(self, symptom_id):
         try:
-            # Truy vấn các triệu chứng liên quan đến symptom_id
+            # Truy vấn các triệu chứng liên quan
             query = f"""
-            PREFIX ctu: <http://www.ctu.edu.vn/>
+            PREFIX ctu: <http://www.ctu.edu.vn/> 
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            SELECT ?relatedSymptom ?relatedSymptomName 
+            SELECT DISTINCT ?relatedSymptom ?relatedSymptomName 
             WHERE {{
-                ctu:{symptom_id} ctu:relatedTo ?relatedSymptom .
+                ctu:{symptom_id} ctu:isCausedBy ?disease .
+                ?relatedSymptom ctu:isCausedBy ?disease .
                 ?relatedSymptom ctu:hasSymptomName ?relatedSymptomName .
+                FILTER (?relatedSymptom != ctu:{symptom_id})
             }}
             """
 
